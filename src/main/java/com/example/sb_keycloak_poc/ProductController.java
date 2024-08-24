@@ -19,16 +19,18 @@ public class ProductController {
         return ProductService.getAllProductDetails();
     }
 
-    // owner scott
+    // owner king
     @PostMapping
     @RequestMapping("/add/product")
+    // @PreAuthorize("hasRole('king')")
     public static Mono<Product> addProductDetails(@RequestBody Product product) {
         return ProductService.addProductDetails(product);
     }
 
-    // manager blake, owner 
+    // manager scott, owner
     @PutMapping
     @RequestMapping("/update/products")
+    // @PreAuthorize("hasRole('manager')")
     public static Flux<Product> updateProductPrice() {
         return ProductService.getAllProductDetails();
     }
