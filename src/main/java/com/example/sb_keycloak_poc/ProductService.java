@@ -6,8 +6,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import jakarta.annotation.PostConstruct;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
 @Service
 public class ProductService {
@@ -22,12 +20,12 @@ public class ProductService {
         products.add(prod2);
     }
 
-    public static Flux<Product> getAllProductDetails() {
-        return Flux.fromIterable(products);
+    public static List<Product> getAllProductDetails() {
+        return products;
     }
 
-    public static Mono<Product> addProductDetails(Product product) {
+    public static Product addProductDetails(Product product) {
         products.add(product);
-        return Mono.just(product);
+        return product;
     }
 }
