@@ -31,10 +31,10 @@ public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationTo
         Map<String,Object> realmAccess=jwt.getClaim("realm_access");
         ObjectMapper mapper=new ObjectMapper();
         List<String> keycloakRoles=mapper.convertValue(realmAccess.get("roles"), new TypeReference<List<String>>() {});
-         List<GrantedAuthority> roles=new ArrayList<>();
+        List<GrantedAuthority> roles=new ArrayList<>();
 
         for(String keycloakRole :keycloakRoles){
-            roles.add(new SimpleGrantedAuthority(keycloakRole));
+            roles.add(new SimpleGrantedAuthority("ROLE_"+keycloakRole));
         }
         return roles;
     }

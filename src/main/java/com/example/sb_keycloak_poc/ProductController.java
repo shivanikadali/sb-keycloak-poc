@@ -15,7 +15,6 @@ public class ProductController {
 
     @GetMapping
     @RequestMapping("/get/products")
-    @PreAuthorize("hasRole('shipper')")
     public static List<Product> getAllProductDetails() {
         return ProductService.getAllProductDetails();
     }
@@ -23,7 +22,6 @@ public class ProductController {
     // owner king
     @PostMapping
     @RequestMapping("/add/product")
-    @PreAuthorize("hasRole('owner')")
     public static Product addProductDetails(@RequestBody Product product) {
         return ProductService.addProductDetails(product);
     }
@@ -31,7 +29,6 @@ public class ProductController {
     // manager scott, owner
     @PutMapping
     @RequestMapping("/update/products")
-    @PreAuthorize("hasRole('manager')")
     public static List<Product> updateProductPrice() {
         return ProductService.getAllProductDetails();
     }
