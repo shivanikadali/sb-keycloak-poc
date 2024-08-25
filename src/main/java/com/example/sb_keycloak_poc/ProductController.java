@@ -1,5 +1,6 @@
 package com.example.sb_keycloak_poc;
 
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -22,7 +23,7 @@ public class ProductController {
     // owner king
     @PostMapping
     @RequestMapping("/add/product")
-    // @PreAuthorize("hasRole('king')")
+    @PreAuthorize("hasRole('king')")
     public static Mono<Product> addProductDetails(@RequestBody Product product) {
         return ProductService.addProductDetails(product);
     }
